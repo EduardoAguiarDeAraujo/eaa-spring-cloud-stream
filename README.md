@@ -58,3 +58,18 @@ kafka-topics --list --bootstrap-server localhost:9092
 kafka-console-consumer --topic approvalRequest-out-0 --bootstrap-server localhost:9092 --from-beginning
 ```
 
+## Comandos Gradle
+
+```bash
+./gradlew build
+```
+```bash
+./gradlew test
+```
+```bash
+./gradlew bootRun
+```
+```bash
+./gradlew bootRun --args="--spring.integration.poller.fixed-delay=5000"
+```
+
