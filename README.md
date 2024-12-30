@@ -145,9 +145,3 @@ docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Image}}\t{{.Status}}'
 ```bash
 ./gradlew bootRun --args="--spring.integration.poller.fixed-delay=100"
 ```
-
-```bash
-docker exec -it rabbitmq sh -c "rabbitmqadmin declare queue name=test-queue && rabbitmqadmin declare binding source=approvalRequest-out-0 destination=test-queue routing_key=#"
-```
-
-
