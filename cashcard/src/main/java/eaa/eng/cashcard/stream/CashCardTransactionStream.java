@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.function.Supplier;
 
 @Configuration
-public class CashCardStream {
+public class CashCardTransactionStream {
 
     @Bean
     public Supplier<Transaction> approvalRequest(DataSourceService dataSource){

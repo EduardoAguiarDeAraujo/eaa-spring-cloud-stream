@@ -123,7 +123,6 @@ Execute o comando a seguir para criar uma fila chamada test-queue para extrair d
 docker exec -it rabbitmq sh -c "rabbitmqadmin declare queue name=test-queue && rabbitmqadmin declare binding source=approvalRequest-out-0 destination=test-queue routing_key=#"
 ```
 
-
 #### Verificar os containers
 ```bash
 docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Image}}\t{{.Status}}'
@@ -144,4 +143,28 @@ docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Image}}\t{{.Status}}'
 ```
 ```bash
 ./gradlew bootRun --args="--spring.integration.poller.fixed-delay=100"
+```
+
+### Comando curl
+```bash
+curl -d '{"id":100,"cashCard":{"id":209,"owner":"kumar2","amountRequestedForAuth":200.0}}' -H "Content-Type: application/json" -X POST http://localhost:8080/publish/txn
+```
+
+#### Para o PowerShell
+```bash
+$headers = @{ "Content-Type" = "application/json" }
+$body = @{
+    id = 100
+    cashCard = @{
+        id = 209
+        owner = "kumar2"
+        amountRequestedForAuth = 200.0
+    }
+} | ConvertTo-Json -Depth 10
+
+Invoke-WebRequest -Uri "http://localhost:8080/publish/txn" `
+                  -Method POST `
+                  -Headers $headers `
+                  -Body $body
+
 ```
