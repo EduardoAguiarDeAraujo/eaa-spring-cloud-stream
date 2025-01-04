@@ -64,7 +64,9 @@ kafka-topics --list --bootstrap-server localhost:9092
 ```bash
 kafka-console-consumer --topic approvalRequest-out-0 --bootstrap-server localhost:9092 --from-beginning
 ```
-
+```bash
+kafka-console-consumer --topic enrichTransaction-out-0 --bootstrap-server localhost:9092 --from-beginning
+```
 ## Configurando Container Docker RabbitMQ
 
 ### Criar arquivo docker-compose.yml:
@@ -145,7 +147,7 @@ docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Image}}\t{{.Status}}'
 ./gradlew bootRun --args="--spring.integration.poller.fixed-delay=100"
 ```
 
-### Comando curl
+## Comando curl
 ```bash
 curl -d '{"id":100,"cashCard":{"id":209,"owner":"kumar2","amountRequestedForAuth":200.0}}' -H "Content-Type: application/json" -X POST http://localhost:8080/publish/txn
 ```
